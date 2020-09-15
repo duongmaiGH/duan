@@ -3,6 +3,7 @@ import styles from './styles';
 import { withStyles, Switch,BrowserRouter } from "@material-ui/core";
 import { ThemeProvider } from '@material-ui/core/styles';
 import Login from './../Login/index';
+import Dashboard from './../dashboard/index';
 import theme from '../../commoms/Theme';
 import { ADMIN_ROUTES } from './../../constants/index';
 import AdminLayoutRoute from './../../commoms/AdminLayoutRoute/index';
@@ -31,6 +32,7 @@ class App extends Component {
       <ThemeProvider theme={theme}>
       {/* <Switch>{this.renderAdminRoutes()}</Switch> */}
       <Login/>
+      {/* <Dashboard/> */}
     </ThemeProvider>
     );
   }
