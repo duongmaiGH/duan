@@ -1,19 +1,34 @@
+import dangnhap from "../container/dangnhap";
 import Login from "../container/Login";
-import dashboard from "../container/dashboard";
-
-export const menuId = 'primary-search-account-menu';
+import Quanlycongviec from "../container/Quanlycongviec";
+import trangchu from "../container/Trangchu";
 
 export const ADMIN_ROUTES = [
     {
-      path : '/',
+      path : '/Trangchu',
+      name : 'Trang Chủ',
+      exact : true,
+      component : trangchu,
+    },
+    {
+      path : '/Quanlycongviec',
+      name : 'Quản Lý Công Việc',
+      exact : true,
+      component : Quanlycongviec,
+    },
+  ];
+
+  export const LOGIN_ROUTES = [
+    {
+      path : '/login',
       name : 'Đăng Nhập',
       exact : true,
       component : Login,
     },
     {
-      path : '/Dashboard',
-      name : 'Dashboard',
+      path : '/dangnhap',
+      name : 'Đăng Nhập',
       exact : true,
-      component : dashboard,
-    }
+      component : dangnhap,
+    },
   ];

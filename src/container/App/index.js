@@ -1,39 +1,56 @@
-import React, { Component } from 'react';
-import styles from './styles';
-import { withStyles, Switch,BrowserRouter } from "@material-ui/core";
-import { ThemeProvider } from '@material-ui/core/styles';
-import Login from './../Login/index';
-import Dashboard from './../dashboard/index';
-import theme from '../../commoms/Theme';
-import { ADMIN_ROUTES } from './../../constants/index';
-import AdminLayoutRoute from './../../commoms/AdminLayoutRoute/index';
-
+import React, { Component } from "react";
+import styles from "./styles";
+import { withStyles } from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/core/styles";
+import theme from "../../commoms/Theme";
+import { ADMIN_ROUTES, LOGIN_ROUTES } from "./../../constants/index";
+import AdminLayoutRoute from "../../commoms/Layout/AdminLayoutRoute/index";
+import { BrowserRouter, Switch } from "react-router-dom";
+import CssBaseline from '@material-ui/core/CssBaseline';
+import LoginLayoutRoute from './../../commoms/Layout/LoginLayoutRoute/index';
 
 class App extends Component {
+  renderAdminRoutes() {
+    let xhtml = null;
+    xhtml = ADMIN_ROUTES.map((route) => {
+      return (
+        <AdminLayoutRoute
+          key={route.path}
+          path={route.path}
+          component={route.component}
+          name={route.name}
+          exact={route.exact}
+        />
+      );
+    });
+    return xhtml;
+  }
 
-  // renderAdminRoutes() {
-  //   let xhtml = null;
-  //   xhtml = ADMIN_ROUTES.map((route) =>{
-  //     return (
-  //       <AdminLayoutRoute
-  //       key={route.path}
-  //         path={route.path}
-  //         component={route.component}
-  //         exact={route.exact}
-  //         name={route.name}
-  //       />
-  //     )
-  //   });
-  //   return xhtml;
-  // }
+  renderLoginRoutes() {
+    let xhtml = null;
+    xhtml = LOGIN_ROUTES.map((oroute) =>{
+      return (
+        <LoginLayoutRoute
+        key={oroute.path}
+          path={oroute.path}
+          component={oroute.component}
+          name={oroute.name}
+          exact={oroute.exact}
+        />
+      )
+    });
+    return xhtml;
+  }
 
   render() {
     return (
-      <ThemeProvider theme={theme}>
-      {/* <Switch>{this.renderAdminRoutes()}</Switch> */}
-      <Login/>
-      {/* <Dashboard/> */}
-    </ThemeProvider>
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+        <CssBaseline />
+          <Switch>{this.renderAdminRoutes()}</Switch>
+          <Switch>{this.renderLoginRoutes()}</Switch>
+        </ThemeProvider>
+      </BrowserRouter>
     );
   }
 }

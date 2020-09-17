@@ -58,7 +58,7 @@ class dashboard extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes,name } = this.props;
     
     return (
       <div className={classes.grow}>
@@ -73,9 +73,9 @@ class dashboard extends Component {
               <MenuIcon />
             </IconButton>
             <Typography className={classes.title} variant="h6" noWrap>
-              DashBoard
+              {name}
             </Typography>
-            <div className={classes.search}>
+            {/* <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
@@ -87,7 +87,7 @@ class dashboard extends Component {
                 }}
                 inputProps={{ "aria-label": "search" }}
               />
-            </div>
+            </div> */}
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <IconButton aria-label="show 4 new mails" color="inherit">
